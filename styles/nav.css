@@ -1,0 +1,11 @@
+.navbar {
+    background-color: white;
+}
+.navbar a{
+    color: saddlebrown;
+}
+
+.navbar-left a{
+    font-style: italic;
+    text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+#left-sidebar {
+    float:left;
+    height: 100%;
+    width: 15%;
+    /*position: relative;*/
+    background-color: lightgray;
+}
+
+#right-sidebar {
+    float:right;
+    height: 100%;
+    width: 15%;
+    /*position: relative;*/
+    background-color: lightgray;
+}

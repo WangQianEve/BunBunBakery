@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BunBunBakery</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/index.js"></script>
+
+</head>
+
+<body ng-app="bunbun">
+
+<nav id="mnav" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Bun Bun</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">CMU Store</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">bout</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Jason</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id='main_content' ng-controller="repeatController">
+    <div id='left-nav'>
+        <div>Refine By</div>
+        <div>Bread<a class="clear">clear</a></div>
+        <label><input type="checkbox" value="">Original</label>
+        <label><input type="checkbox" value="">Original</label>
+        <div>Glazing<a class="clear">clear</a></div>
+        <label><input type="checkbox" value=""><img src="images/gl-milk.png"/>Sugar-milk</label>
+        <label><input type="checkbox" value="">Original</label>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+
+    <div id="content">
+        <div id="tracking">tracking</div>
+        <div>I liked ...</div>
+        <div class="gallery">
+            <div class="product" ng-repeat="product in likes">
+                <div>
+                    <img src="images/fl-org-h.png"/><img src="images/gl-milk-h.png"/>
+                </div>
+                <div class="product-description">
+                    <div>{{product.name}}</div>
+                    <div class="short-intro">{{product.intro}}</div>
+                    <div class="price">${{product.price}}</div>
+                    <div class="op">
+                        <a><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                        <a><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                        <a><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>Previous Orders</div>
+    </div>
+
+    <div id='right-nav'>
+        <div id="shopping-cart">
+            <div id="shopping-cart-header">Header</div>
+            <div id="shopping-cart-list">
+                <div class="shopping-cart-product">Product</div>
+                <div class="shopping-cart-product">Product</div>
+                <div class="shopping-cart-product">Product</div>
+                <div class="shopping-cart-product">Product</div>
+                <div class="shopping-cart-product">Product</div>
+            </div>
+        </div>
+        <div id="group-order">group-order</div>
+        <div id="recently-viewed">recently-viewed</div>
+    </div>
+</div>
+<!--<div id="right-sidebar">-->
+<!--<button type="button" class="btn btn-warning brown-text">Checkout</button>-->
+<!--&lt;!&ndash;<div class = "sidebar-title">&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="images/empty-shopping-cart.png">&ndash;&gt;-->
+<!--&lt;!&ndash;<h3>1</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;<h6>total = </h6><h6 style="color:yellow">$ 3</h6>&ndash;&gt;-->
+<!--&lt;!&ndash;<button type="button" class="btn btn-warning brown-text">Checkout</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class = ""></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class = "sidebar-title">Group Orders</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class = "sidebar-title">Recently Viewed</div>&ndash;&gt;-->
+<!--</div>-->
+
+
+<!--<div id="left-sidebar-placeholder"></div>-->
+
+
+</body>
+</html>
