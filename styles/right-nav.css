@@ -1,0 +1,108 @@
+#right-nav {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 150px;
+  height: 100%;
+  background-color: #e8e8e8;
+  text-align: center;
+}
+#right-nav #shopping-cart {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+#right-nav #shopping-cart #shopping-cart-header {
+  flex-shrink: 0;
+  height: 120px;
+  color: white;
+  background-color: #563111;
+  background-image: url("../images/empty-shopping-cart.png");
+  background-repeat: no-repeat;
+  background-size: 45px;
+  background-position: center 6%;
+}
+#right-nav #shopping-cart #shopping-cart-header #cart-sum {
+  padding-top: 6px;
+  letter-spacing: 2px;
+}
+#right-nav #shopping-cart #shopping-cart-header .btn-checkout {
+  padding: 3px 15px;
+  background-color: orange;
+  color: saddlebrown;
+}
+#right-nav #shopping-cart #shopping-cart-header .btn-checkout :hover {
+  color: saddlebrown;
+}
+#right-nav #shopping-cart #shopping-cart-list {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+#right-nav #shopping-cart .shopping-cart-product {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+}
+#right-nav #shopping-cart .shopping-cart-product .product-description {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#right-nav #shopping-cart .shopping-cart-product .product-description .amount {
+  margin: 0px;
+  color: dimgrey;
+  font-size: x-small;
+}
+#right-nav #shopping-cart .shopping-cart-product .product-description .price {
+  text-align: right;
+  margin: 0px;
+  color: red;
+}
+#right-nav #group-order {
+  margin-top: auto;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100px;
+}
+#right-nav #recently-viewed {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100px;
+}
+#right-nav #recently-viewed #recently-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#right-nav .right-header {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  background-color: #563111;
+  color: white;
+}
+#right-nav .thumbview {
+  position: relative;
+  width: 30%;
+}
+#right-nav .thumbview img {
+  width: 100%;
+}
+#right-nav .thumbview .flavor {
+  clip-path: inset(0 50% 0 0);
+}
+#right-nav .thumbview .glazing {
+  clip-path: inset(0 0 0 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=right-nav.css.map */

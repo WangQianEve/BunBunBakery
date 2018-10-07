@@ -1,11 +1,12 @@
 .navbar {
-    background-color: white;
+  background-color: white;
 }
-.navbar a{
-    color: saddlebrown;
+.navbar a {
+  color: saddlebrown;
+}
+.navbar .navbar-left a {
+  font-style: italic;
+  text-decoration: underline;
 }
 
-.navbar-left a{
-    font-style: italic;
-    text-decoration: underline;
-}
+/*# sourceMappingURL=nav.css.map */

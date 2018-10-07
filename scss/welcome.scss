@@ -1,0 +1,81 @@
+@import "base";
+
+.jumbotron{
+  background-image: url("../images/jumbotron.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  #welcome{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    h2{
+      color: white;
+    }
+    button{
+      width: fit-content;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      padding: 6px 40px;
+    }
+  }
+
+  .item{
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #sign-in-panel{
+    max-width: 240px;
+    background-color: $sign-in-panel-color;
+    align-self: center;
+    padding: 20px;
+    margin-top: 50px;
+    align-items: center;
+    color: $primary-color;
+    #dividing{
+      width: 100%;
+      height: 20px;
+      border-bottom: 1px solid $primary-color;
+      text-align: center;
+      padding-top: 5px;
+      margin-bottom: 10px;
+      small{
+        background-color: $sign-in-panel-color;
+        padding: 0px 10px;
+      }
+    }
+    #google{
+
+    }
+  }
+}
+
+.container{
+  text-align: center;
+
+  #tables{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    color: $dark-primary-color;
+
+    div{
+      border: 1px solid $primary-color;
+      width: 300px;
+      height: 160px;
+      margin: 20px;
+      padding: 20px;
+      background-size: cover;
+      .title{
+        font-size: large;
+      }
+      p{
+        text-align: left;
+      }
+    }
+  }
+}

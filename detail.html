@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BunBunBakery-Detail</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/right-nav.css">
+    <link rel="stylesheet" href="styles/js.css">
+    <link rel="stylesheet" href="styles/detail.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/index.js"></script>
+
+</head>
+
+<body ng-app="bunbun">
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Bun Bun</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">CMU Store</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="welcome.html#features">Features</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Jason</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id='main_content' ng-controller="repeatController">
+    <div id="left">
+        <div id="tracking" class="btn btn-primary btn-md">Your order will arrive in <b>9 minutes</b> !</div>
+        <div id="content">
+            <div id="detail-wrap">
+                <div id="detail">
+                    <div id="title" class="item">
+                        <div id="title-thumb">
+                            <img src="images/fl-org-h.png"/><img src="images/gl-milk-h.png"/>
+                        </div>
+                        <div>
+                            <h3>{{detail}}<span class="glyphicon glyphicon-heart-empty"></span></h3>
+                            <p>{{product_info[detail].description}}</p>
+                        </div>
+                    </div>
+                    <div id="tables" class="item">
+                        <div>
+                            <h5>Ingredient</h5>
+                            <p>1 cup warm milk.
+                                2 1/4 teaspoons 1 packet yeast.
+                                1/2 cup granulated sugar.
+                                1/2 cup melted butter.
+                                2 teaspoons Kosher salt.
+                                2 large eggs.
+                                4 1/2 cups all-purpose flour + a little for handling.</p>
+                        </div>
+                        <div>
+                            <h5>Nutrition</h5>
+                            <p>Total Fat 16     24%;
+                                Cholesterol 2 mg	0%;
+                                Sodium 198 mg	8%;
+                                Potassium 62 mg	1%;
+                                Total Carbohydrate 32 g	10%;
+                                Dietary fiber 0.8 g	3%;
+                                Sugar 17 g;
+                                Protein 3.1 g	6%;
+                                Calcium	10%;	Iron	4%;
+                                Vitamin B-12	1%;Magnesium	2% </p>                        </div>
+                        <div>
+                            <h5>Allergens</h5>
+                            <p>Our product is dairy-free and egg-free. Our products are also nut-free but are produced on shared equipment containing tree nuts which may cause allergic reactions. </p>
+                        </div>
+                    </div>
+                    <h4  class="item">Customer Reviews</h4>
+                    <div class="review item">
+                        <img src="images/user1.png"/>
+                        <p>These are the Very Best Cinnamon Rolls melt in your mouth I have ever tasted! </p>
+                    </div>
+                    <div class="review item">
+                        <img src="images/user2.png"/>
+                        <p>These are very tasty, low-sugar, high protein bars. I have tried most of the Questbar flavors and this one is my favorite by far. </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="operation">
+                <div id="pricetag">
+                    <p>Price: </p><b id="price">$ {{product_info[detail].price}}</b>
+                </div>
+                <div id="op-count">
+                    <p>Qty: </p>
+                    <select ng-model="selectedItem" ng-init="selectedItem = amountOptions[0]" ng-options="option for option in amountOptions"></select>
+                </div>
+                <button type="button" class="btn btn-default btn-add"  ng-click="addToCart('Bun Bun Classic',selectedItem)">Add to Cart</button>
+                <button type="button" class="btn btn-warning btn-checkout">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id='right-nav'>
+        <div id="shopping-cart">
+            <div id="shopping-cart-header">
+                <h4>1</h4>
+                <p id="cart-sum">total=<b style="color:orange">$3.5</b></p>
+                <button type="button" class="btn btn-warning btn-checkout">Checkout</button>
+            </div>
+            <div id="shopping-cart-list">
+                <div class="shopping-cart-product" ng-repeat="(key,amount) in shoppingCartItems">
+                    <div class="thumbview to_detail">
+                        <img class="flavor" src="images/{{product_info[key].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[key].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <small class="to_detail"><b>{{key}}</b></small>
+                        <small class="price">${{product_info[key].price}}</small>
+                        <small class="amount" id="count">
+                            <span>Qty: </span>
+                            <select ng-model="cartSelectedItem" ng-options="option for option in amountOptions"></select>
+                            <a ng-click="deleteFromShoppingCart(key)">Delete</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="group-order">
+            <div class="right-header">
+                <h5>Group Order</h5>
+            </div>
+            <h4>+</h4>
+        </div>
+
+        <div id="recently-viewed">
+            <div class="right-header"><h5>Recently Viewed</h5></div>
+            <div id="recently-gallery">
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-org.png"/>
+                    <img class="glazing" src="images/gl-milk.png"/>
+                </div>
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-walnut.png"/>
+                    <img class="glazing" src="images/gl-choco.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

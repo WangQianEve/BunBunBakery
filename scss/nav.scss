@@ -1,0 +1,12 @@
+@import "base";
+.navbar {
+  background-color: white;
+  a{
+    color: $primary-color;
+  }
+  .navbar-left a{
+    font-style: italic;
+    text-decoration: underline;
+  }
+}
+

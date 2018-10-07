@@ -1,0 +1,170 @@
+@import "base";
+
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    min-height: 100%;
+  }
+}
+
+#main_content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding-top: 50px;
+
+  #left-nav {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    flex-shrink: 0;
+    height: auto;
+    width: 160px;
+    position: relative;
+    background-color: white;
+
+    .item{
+      flex-shrink: 0;
+    }
+    div{
+      display: flex;
+      flex-direction: row;
+      span{
+        font-size: 9pt;
+      }
+    }
+
+    .header1{
+      color:grey;
+      margin-bottom: 0px;
+    }
+
+    .header2{
+      position: relative;
+      margin-bottom: 10px;
+      .clear{
+        font-style: italic;
+        float: right;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+    }
+
+    img{
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    input{
+      margin: 10px 10px;
+    }
+  }
+
+  #middle {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    #tracking{
+      align-self: flex-end;
+      font-style: italic;
+      color: white;
+      background-color: saddlebrown;
+      border: 0px;
+    }
+
+    #content {
+      display: flex;
+      flex-direction: column;
+      padding: 0 30px;
+      overflow-x: auto;
+
+      h4{
+        margin-top: 30px;
+        flex-shrink: 0;
+      }
+      .gallery{
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .product{
+        display: flex;
+        flex-direction: row;
+        width: 260px;
+        padding: 10px;
+
+        .thumbview{
+          position: relative;
+          img{
+            width: 50px;
+          }
+
+          .flavor{
+            clip-path: inset(0 50% 0 0);
+          }
+
+          .glazing{
+            clip-path: inset(0 0 0 50%);
+            position: absolute;
+            top:0;
+            left:0;
+          }
+        }
+
+        .product-description{
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          justify-content: flex-start;
+          text-align: left;
+          padding-left: 5px;
+          padding-right: 5px;
+
+          .short-intro{
+            margin-bottom: auto;
+            color: grey;
+            font-style: italic;
+          }
+
+          .price {
+            align-self: flex-end;
+            color: brown;
+          }
+
+          .operation{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            font-size: small;
+
+            .like-button{
+              color:deeppink;
+            }
+
+            .buy-button {
+              color: $light-primary-color;
+            }
+
+            .mglyphicon.add-to-cart {
+              background: url("../images/add-shopping-cart.png");
+              background-size: 10px;
+              background-repeat: no-repeat;
+              background-position: 0% center;
+              color: green;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+}
+
+

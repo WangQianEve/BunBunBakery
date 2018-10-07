@@ -1,0 +1,191 @@
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+  min-height: 100%;
+}
+
+#main_content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding-top: 50px;
+}
+#main_content #left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+#main_content #left #tracking {
+  align-self: flex-end;
+  font-style: italic;
+  color: white;
+  background-color: saddlebrown;
+  border: 0px;
+}
+#main_content #left #content {
+  display: flex;
+  flex-direction: row;
+}
+#main_content #left #content #detail-wrap {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+#main_content #left #content #detail {
+  max-width: 800px;
+  padding-left: 50px;
+  padding-right: 20px;
+  margin: auto;
+}
+#main_content #left #content #detail .item {
+  margin-top: 15px;
+}
+#main_content #left #content #detail #title {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+}
+#main_content #left #content #detail #title #title-thumb {
+  flex-shrink: 0;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+#main_content #left #content #detail #title #title-thumb img {
+  width: 40px;
+}
+#main_content #left #content #detail #title h3 {
+  margin: 0;
+}
+#main_content #left #content #detail #title p {
+  font-style: italic;
+  color: saddlebrown;
+}
+#main_content #left #content #detail #tables {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#main_content #left #content #detail #tables div {
+  border: 1px solid saddlebrown;
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px 10px;
+}
+#main_content #left #content #detail #tables div p {
+  text-align: left;
+}
+#main_content #left #content #detail .review {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+}
+#main_content #left #content #detail .review img {
+  width: 40px;
+  height: 40px;
+  clip-path: circle(20px at center);
+}
+#main_content #left #content #detail .review p {
+  padding-left: 10px;
+  flex-grow: 1;
+}
+#main_content #left #content #detail #gallery {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#main_content #left #content #detail #gallery .product {
+  display: flex;
+  flex-direction: row;
+  width: 260px;
+  padding: 10px;
+}
+#main_content #left #content #detail #gallery .product img {
+  width: 28px;
+}
+#main_content #left #content #detail #gallery .product .product-description {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#main_content #left #content #detail #gallery .product .product-description .short-intro {
+  margin-bottom: auto;
+  color: grey;
+  font-style: italic;
+}
+#main_content #left #content #detail #gallery .product .product-description .price {
+  align-self: flex-end;
+  color: brown;
+}
+#main_content #left #content #detail #gallery .product .product-description .operation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: small;
+}
+#main_content #left #content #detail #gallery .product .product-description .operation .like-button {
+  color: deeppink;
+}
+#main_content #left #content #detail #gallery .product .product-description .operation .buy-button {
+  color: orange;
+}
+#main_content #left #content #detail #gallery .product .product-description .operation .mglyphicon.add-to-cart {
+  background: url("../images/add-shopping-cart.png");
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: 0% center;
+  color: green;
+}
+#main_content #left #content #operation {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  width: 120px;
+  padding-right: 20px;
+  font-size: small;
+}
+#main_content #left #content #operation #pricetag {
+  display: flex;
+  flex-direction: row;
+}
+#main_content #left #content #operation #pricetag #price {
+  margin-left: 5px;
+  color: red;
+}
+#main_content #left #content #operation #op-count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#main_content #left #content #operation #op-count p {
+  margin: 0;
+}
+#main_content #left #content #operation #op-count select {
+  margin-left: 5px;
+  width: 50px;
+  height: 20px;
+}
+#main_content #left #content #operation .btn {
+  padding: 0;
+  height: 30px;
+  margin-top: 10px;
+  color: #563111;
+  font-size: small;
+}
+#main_content #left #content #operation .btn :hover {
+  color: #563111;
+}
+#main_content #left #content #operation .btn-add {
+  border: 1px solid saddlebrown;
+}
+
+/*# sourceMappingURL=detail.css.map */

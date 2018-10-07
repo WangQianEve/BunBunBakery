@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/nav.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/right-nav.css">
+    <link rel="stylesheet" href="styles/js.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,18 +19,18 @@
 
 <body ng-app="bunbun">
 
-<nav id="mnav" class="navbar navbar-fixed-top">
+<nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bun Bun</a>
+            <a class="navbar-brand" href="index.html">Bun Bun</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
             <li><a href="#">CMU Store</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">bout</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="welcome.html#features">Features</a></li>
+            <li><a href="#">About</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span>Jason</a></li>
         </ul>
     </div>
@@ -37,70 +38,159 @@
 
 <div id='main_content' ng-controller="repeatController">
     <div id='left-nav'>
-        <div>Refine By</div>
-        <div>Bread<a class="clear">clear</a></div>
-        <label><input type="checkbox" value="">Original</label>
-        <label><input type="checkbox" value="">Original</label>
-        <div>Glazing<a class="clear">clear</a></div>
-        <label><input type="checkbox" value=""><img src="images/gl-milk.png"/>Sugar-milk</label>
-        <label><input type="checkbox" value="">Original</label>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <h5 class="header1 item">Refine By</h5>
+        <h4 class="header2 item">Bread<small><a class="clear">clear</a></small></h4>
+        <div ng-repeat="item in flavors" class="item">
+            <input type="checkbox" value=""><img src="images/{{item[1]}}"/>
+            <span>{{item[0]}}</span>
+        </div>
+        <h4 class="header2 item">Glazing<small><a class="clear">clear</a></small></h4>
+        <div ng-repeat="item in glazings" class="item">
+            <input type="checkbox" value=""><img src="images/{{item[1]}}"/>
+            <span>{{item[0]}}</span>
+        </div>
     </div>
 
-    <div id="content">
-        <div id="tracking">tracking</div>
-        <div>I liked ...</div>
-        <div class="gallery">
-            <div class="product" ng-repeat="product in likes">
-                <div>
-                    <img src="images/fl-org-h.png"/><img src="images/gl-milk-h.png"/>
-                </div>
-                <div class="product-description">
-                    <div>{{product.name}}</div>
-                    <div class="short-intro">{{product.intro}}</div>
-                    <div class="price">${{product.price}}</div>
-                    <div class="op">
-                        <a><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
-                        <a><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
-                        <a><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+    <div id="middle">
+        <div id="tracking" class="btn btn-primary btn-md">Your order will arrive in <b>9 minutes</b> !</div>
+        <div id="content">
+            <h4>My Favorites</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in favorties">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <h4>Previous Orders</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in previous">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Recommendation</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in recommend">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>All Cinnamon Rolls</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="(name,product) in product_info">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product.flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product.glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{name}}</strong>
+                        <small class="short-intro to_detail">{{product.flavor[0]+product.glazing[0]}}</small>
+                        <small class="price">${{product.price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(name)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div>Previous Orders</div>
     </div>
 
     <div id='right-nav'>
         <div id="shopping-cart">
-            <div id="shopping-cart-header">Header</div>
+            <div id="shopping-cart-header">
+                <h4>1</h4>
+                <p id="cart-sum">total=<b style="color:orange">$3.5</b></p>
+                <button type="button" class="btn btn-warning btn-checkout">Checkout</button>
+            </div>
             <div id="shopping-cart-list">
-                <div class="shopping-cart-product">Product</div>
-                <div class="shopping-cart-product">Product</div>
-                <div class="shopping-cart-product">Product</div>
-                <div class="shopping-cart-product">Product</div>
-                <div class="shopping-cart-product">Product</div>
+                <div class="shopping-cart-product" ng-repeat="(key,price) in shoppingCartItems">
+                    <div class="thumbview to_detail">
+                        <img class="flavor" src="images/{{product_info[key].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[key].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <small class="to_detail"><b>{{key}}</b></small>
+                        <small class="price">${{price}}</small>
+                        <small class="amount" id="count">
+                            <span>Qty: </span>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            <a ng-click="deleteFromShoppingCart(key)">Delete</a>
+                        </small>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="group-order">group-order</div>
-        <div id="recently-viewed">recently-viewed</div>
+
+        <div id="group-order">
+            <div class="right-header">
+                <h5>Group Order</h5>
+            </div>
+            <h4>+</h4>
+        </div>
+
+        <div id="recently-viewed">
+            <div class="right-header"><h5>Recently Viewed</h5></div>
+            <div id="recently-gallery">
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-org.png"/>
+                    <img class="glazing" src="images/gl-milk.png"/>
+                </div>
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-walnut.png"/>
+                    <img class="glazing" src="images/gl-choco.png"/>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
-<!--<div id="right-sidebar">-->
-<!--<button type="button" class="btn btn-warning brown-text">Checkout</button>-->
-<!--&lt;!&ndash;<div class = "sidebar-title">&ndash;&gt;-->
-<!--&lt;!&ndash;<img src="images/empty-shopping-cart.png">&ndash;&gt;-->
-<!--&lt;!&ndash;<h3>1</h3>&ndash;&gt;-->
-<!--&lt;!&ndash;<h6>total = </h6><h6 style="color:yellow">$ 3</h6>&ndash;&gt;-->
-<!--&lt;!&ndash;<button type="button" class="btn btn-warning brown-text">Checkout</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class = ""></div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class = "sidebar-title">Group Orders</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class = "sidebar-title">Recently Viewed</div>&ndash;&gt;-->
-<!--</div>-->
-
-
-<!--<div id="left-sidebar-placeholder"></div>-->
-
 
 </body>
 </html>
