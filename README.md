@@ -1,5 +1,5 @@
 # BunBunBakery
-Online Store of BunBun Bakery. Project 1 for SSUI.
+Online Store of BunBun Bakery. Project 1, Assignment 5 of SSUI.
 
 
 
@@ -7,9 +7,9 @@ Online Store of BunBun Bakery. Project 1 for SSUI.
 
 A user should be able to: 
 
-1. Open your site to the home page ([welcome page]())
+1. Open your site to the home page ([welcome page](https://wangqianeve.github.io/BunBunBakery/))
 
-2. Start browsing through products ([home page]())
+2. Start browsing through products : click sign-in button.
 
 3. Select a product, and see more details about that product ([detail page]())
 

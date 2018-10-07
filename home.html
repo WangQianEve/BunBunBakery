@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BunBunBakery</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/right-nav.css">
+    <link rel="stylesheet" href="styles/js.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/index.js"></script>
+
+</head>
+
+<body ng-app="bunbun">
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Bun Bun</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">CMU Store</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="home.html">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Jason</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id='main_content' ng-controller="repeatController">
+    <div id='left-nav'>
+        <h5 class="header1 item">Refine By</h5>
+        <h4 class="header2 item">Bread<small><a class="clear">clear</a></small></h4>
+        <div ng-repeat="item in flavors" class="item">
+            <input type="checkbox" value=""><img src="images/{{item[1]}}"/>
+            <span>{{item[0]}}</span>
+        </div>
+        <h4 class="header2 item">Glazing<small><a class="clear">clear</a></small></h4>
+        <div ng-repeat="item in glazings" class="item">
+            <input type="checkbox" value=""><img src="images/{{item[1]}}"/>
+            <span>{{item[0]}}</span>
+        </div>
+    </div>
+
+    <div id="middle">
+        <div id="tracking" class="btn btn-primary btn-md">Your order will arrive in <b>9 minutes</b> !</div>
+        <div id="content">
+            <h4>My Favorites</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in favorties">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Previous Orders</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in previous">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Recommendation</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="product in recommend">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product_info[product].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[product].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{product}}</strong>
+                        <small class="short-intro to_detail">{{product_info[product].flavor[0]+product_info[product].glazing[0]}}</small>
+                        <small class="price">${{product_info[product].price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>All Cinnamon Rolls</h4>
+            <div class="gallery">
+                <div class="product" ng-repeat="(name,product) in product_info">
+                    <div class="to_detail thumbview">
+                        <img class="flavor" src="images/{{product.flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product.glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <strong class="to_detail">{{name}}</strong>
+                        <small class="short-intro to_detail">{{product.flavor[0]+product.glazing[0]}}</small>
+                        <small class="price">${{product.price}}</small>
+                        <div class="operation">
+                            <a class="like-button"><span class="glyphicon glyphicon-heart-empty"></span>Like</a>
+                            <a class="mglyphicon add-to-cart" ng-click="addToCart(name)"><span class="glyphicon glyphicon-heart-empty" style="visibility: hidden"></span>Add</a>
+                            <a class="buy-button"><span class="glyphicon glyphicon glyphicon-usd"></span>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id='right-nav'>
+        <div id="shopping-cart">
+            <div id="shopping-cart-header">
+                <h4>1</h4>
+                <p id="cart-sum">total=<b style="color:orange">$3.5</b></p>
+                <button type="button" class="btn btn-warning btn-checkout">Checkout</button>
+            </div>
+            <div id="shopping-cart-list">
+                <div class="shopping-cart-product" ng-repeat="(key,price) in shoppingCartItems">
+                    <div class="thumbview to_detail">
+                        <img class="flavor" src="images/{{product_info[key].flavor[1]}}"/>
+                        <img class="glazing" src="images/{{product_info[key].glazing[1]}}"/>
+                    </div>
+                    <div class="product-description">
+                        <small class="to_detail"><b>{{key}}</b></small>
+                        <small class="price">${{price}}</small>
+                        <small class="amount" id="count">
+                            <span>Qty: </span>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            <a ng-click="deleteFromShoppingCart(key)">Delete</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="group-order">
+            <div class="right-header">
+                <h5>Group Order</h5>
+            </div>
+            <h4>+</h4>
+        </div>
+
+        <div id="recently-viewed">
+            <div class="right-header"><h5>Recently Viewed</h5></div>
+            <div id="recently-gallery">
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-org.png"/>
+                    <img class="glazing" src="images/gl-milk.png"/>
+                </div>
+                <div class="thumbview to_detail">
+                    <img class="flavor" src="images/fl-walnut.png"/>
+                    <img class="glazing" src="images/gl-choco.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
